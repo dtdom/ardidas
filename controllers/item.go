@@ -3,13 +3,14 @@ package controllers
 import (
 	"encoding/json"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
+	"strconv"
 
 	"github.com/dtdom/ardidas/models"
 	"github.com/dtdom/ardidas/utils"
 
 	"github.com/gorilla/mux"
-	uuid "github.com/satori/go.uuid"
 )
 
 func GetItem(w http.ResponseWriter, r *http.Request) {
@@ -50,8 +51,9 @@ func StoreItem(w http.ResponseWriter, r *http.Request) {
 	var i models.Item
 	b, _ := ioutil.ReadAll(r.Body)
 	json.Unmarshal(b, &i)
-	u1 := uuid.Must(uuid.NewV4())
-	i.ID = u1.String()
+	// u1 := uuid.Must(uuid.NewV4())
+	// i.ID = u1.String()
+	i.ID = "SKU1000" + strconv.Itoa(rand.Intn(999))
 	i.Store()
 	utils.RespondWithJSON(w, http.StatusOK, "Stored")
 }
