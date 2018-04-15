@@ -23,7 +23,7 @@ type sqlInfo struct {
 var MainConfig Config
 
 func init() {
-	if _, err := toml.DecodeFile("/Users/davidtamayodomenech/go/src/ardidas/configuration.toml", &MainConfig); err != nil {
+	if _, err := toml.DecodeFile("configuration.toml", &MainConfig); err != nil {
 		fmt.Println(err)
 		return
 	}
