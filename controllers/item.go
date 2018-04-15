@@ -1,11 +1,12 @@
 package controllers
 
 import (
-	"ardidas/models"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
-	"pmws/pmws/utils"
+
+	"github.com/dtdom/ardidas/models"
+	"github.com/dtdom/ardidas/utils"
 
 	"github.com/gorilla/mux"
 	uuid "github.com/satori/go.uuid"

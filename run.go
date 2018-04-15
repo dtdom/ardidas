@@ -1,10 +1,11 @@
 package main
 
 import (
-	"ardidas/controllers"
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/dtdom/ardidas/controllers"
 
 	"github.com/gorilla/mux"
 	_ "github.com/lib/pq"

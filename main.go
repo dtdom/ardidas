@@ -1,6 +1,6 @@
 package main
 
-import "ardidas/config"
+import "github.com/dtdom/ardidas/config"
 
 func main() {
 	r := Runner{}
