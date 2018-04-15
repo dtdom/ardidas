@@ -1,13 +1,17 @@
 package models
 
 type Item struct {
-	ID       string `gorm:"primary_key" json:"id"`
-	Name     string `json:"name"`
-	Modality string `json:"modality"`
-	Km       string `json:"km"`
-	Gender   string `json:"gender"`
-	Size     string `json:"size"`
-	Hashtag  string `json:"hashtag"`
+	ID         string `gorm:"primary_key" json:"id"`
+	Name       string `json:"name"`
+	Modality   string `json:"modality"`
+	Km         string `json:"km"`
+	Gender     string `json:"gender"`
+	Size       string `json:"size"`
+	Hashtag    string `json:"hashtag"`
+	ArrayInsta string `json:"arrayinsta"`
+	Photo      string `json:"photo"`
+	Views      int    `json:"views"`
+	Sales      int    `json:"sales"`
 }
 
 func (i *Item) Store() {
@@ -17,9 +21,17 @@ func (i *Item) Store() {
 
 func (i *Item) Get() {
 	db.First(i)
+	views := i.Views + 1
+	db.Model(i).Update("views", views)
 }
 
-func GetAll() []Item {
+func (i *Item) Sell() {
+	db.First(i)
+	sales := i.Sales + 1
+	db.Model(i).Update("sales", sales)
+}
+
+func GetAllItems() []Item {
 	var items []Item
 	db.Find(&items)
 	return items

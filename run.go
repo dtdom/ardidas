@@ -21,10 +21,15 @@ func (r *Runner) Initialize() {
 
 func (r *Runner) initializeRoutes() {
 	r.Router.HandleFunc("/item/{itemid}", controllers.GetItem).Methods("GET")
+	r.Router.HandleFunc("/item/{itemid}/sell", controllers.SellItem).Methods("GET")
 	r.Router.HandleFunc("/item/filter", controllers.FilterItems).Methods("POST")
 	r.Router.HandleFunc("/item", controllers.StoreItem).Methods("POST")
 	r.Router.HandleFunc("/item", controllers.GetItems).Methods("GET")
 	r.Router.HandleFunc("/item/{itemid}/photos", controllers.GetPhotos).Methods("GET")
+	r.Router.HandleFunc("/request/{requestid}", controllers.GetRequest).Methods("GET")
+	r.Router.HandleFunc("/request", controllers.GetRequests).Methods("GET")
+	r.Router.HandleFunc("/request", controllers.StoreRequest).Methods("POST")
+	r.Router.HandleFunc("/request/{requestid}", controllers.CompleteRequest).Methods("PUT")
 
 }
 

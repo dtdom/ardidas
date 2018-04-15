@@ -16,6 +16,6 @@ func init() {
 	if err != nil {
 		log.Fatal("MySQL connection fail")
 	}
-	db.AutoMigrate(Item{})
+	db.AutoMigrate(Item{}, Request{}, User{})
 
 }

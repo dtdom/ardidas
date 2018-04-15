@@ -18,6 +18,13 @@ func GetItem(w http.ResponseWriter, r *http.Request) {
 	utils.RespondWithJSON(w, http.StatusOK, item)
 }
 
+func SellItem(w http.ResponseWriter, r *http.Request) {
+	var item models.Item
+	item.ID = mux.Vars(r)["itemid"]
+	item.Sell()
+	utils.RespondWithJSON(w, http.StatusOK, "done")
+}
+
 func GetPhotos(w http.ResponseWriter, r *http.Request) {
 	var item models.Item
 	item.ID = mux.Vars(r)["itemid"]
@@ -26,7 +33,7 @@ func GetPhotos(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetItems(w http.ResponseWriter, r *http.Request) {
-	items := models.GetAll()
+	items := models.GetAllItems()
 	utils.RespondWithJSON(w, http.StatusOK, items)
 }
 
